@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Overflow & Visibility</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { padding: 20px; background: #f4f7f6; line-height: 1.5; }
+        h2 { margin: 15px 0 10px; color: #2c3e50; font-size: 1.2rem; }
+        
+        .box {
+            width: 280px;
+            height: 75px;
+            border: 2px solid #3498db;
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .ov-hidden { overflow: hidden; }
+        .ov-auto { overflow: auto; }
+        .ov-scroll { overflow: scroll; }
+
+        .v-hidden { visibility: hidden; }
+        .d-none { display: none; }
+        .o-zero { opacity: 0; }
+
+        .img-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        img {
+            width: 120px;
+            height: 100px;
+            border: 2px solid #333;
+            background-color: #eee;
+        }
+        .fit-cover { object-fit: cover; }
+        .fit-contain { object-fit: contain; }
+        .fit-fill { object-fit: fill; }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Overflow & Visibility</h1>
+
+    <h2>1. Overflow</h2>
+    <div class="box ov-hidden">
+        Hidden: Konten teks yang sangat panjang ini akan langsung terpotong jika melebihi ukuran kotak.
+    </div>
+    <div class="box ov-auto">
+        Auto: Konten teks yang sangat panjang ini akan memunculkan scrollbar otomatis saat dibutuhkan.
+    </div>
+
+    <h2>2. Visibility vs Display vs Opacity</h2>
+    <div class="box v-hidden">Visibility Hidden (Masih mengambil tempat)</div>
+    <div class="box d-none">Display None (Tidak mengambil tempat)</div>
+    <div class="box o-zero">Opacity 0 (Transparan tapi tetap ada)</div>
+
+    <h2>3. Object-Fit Gambar</h2>
+    <div class="img-container">
+        <img src="https://via.placeholder.com/300x150" class="fit-cover" alt="Cover">
+        <img src="https://via.placeholder.com/300x150" class="fit-contain" alt="Contain">
+        <img src="https://via.placeholder.com/300x150" class="fit-fill" alt="Fill">
+    </div>
+
+</body>
+</html>

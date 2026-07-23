@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Dasar</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { padding: 20px; background: #f4f7f6; line-height: 1.5; color: #333; }
+        h2 { margin: 15px 0 10px; color: #2c3e50; font-size: 1.2rem; }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            background: #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .grid-custom {
+            display: grid;
+            grid-template-columns: 150px 1fr 2fr;
+            gap: 15px;
+            background: #d5dbdb;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .grid-autofill {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            background: #ebf5fb;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .item {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .span-2 {
+            grid-column: span 2;
+            background: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS Grid Dasar</h1>
+
+    <h2>1. Grid 3 Kolom & Grid Column Span</h2>
+    <div class="grid-container">
+        <div class="item span-2">Grid Column Span 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+    </div>
+
+    <h2>2. Grid Kolom Berbeda Ukuran (150px 1fr 2fr)</h2>
+    <div class="grid-custom">
+        <div class="item" style="background:#8e44ad">150px</div>
+        <div class="item" style="background:#2ecc71">1fr</div>
+        <div class="item" style="background:#f39c12">2fr</div>
+    </div>
+
+    <h2>3. Responsive Grid (Auto-Fill & Minmax)</h2>
+    <div class="grid-autofill">
+        <div class="item" style="background:#16a085">Auto 1</div>
+        <div class="item" style="background:#16a085">Auto 2</div>
+        <div class="item" style="background:#16a085">Auto 3</div>
+        <div class="item" style="background:#16a085">Auto 4</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Positioning</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 60px;
+            height: 2000px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .static {
+            position: static;
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .relative {
+            position: relative;
+            top: 10px;
+            left: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .parent-box {
+            position: relative;
+            height: 150px;
+            background-color: #ecf0f1;
+            border: 2px dashed #bdc3c7;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .absolute {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 50px;
+            background-color: #f39c12;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <strong>Navbar (Position Fixed)</strong>
+    </div>
+
+    <div class="container">
+        <h1>CSS Positioning</h1>
+
+        <div class="card">
+            <h2>1. Position Static</h2>
+            <div class="static">Position Static</div>
+        </div>
+
+        <div class="card">
+            <h2>2. Position Relative</h2>
+            <div class="relative">Position Relative (top: 10px, left: 20px)</div>
+        </div>
+
+        <div class="card">
+            <h2>3. Position Absolute</h2>
+            <div class="parent-box">
+                Parent (Position Relative)
+                <div class="absolute">Position Absolute (top: 10px, right: 10px)</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>4. Position Sticky</h2>
+            <div class="sticky-header">Sticky Header (top: 50px)</div>
+            <p>Scroll ke bawah untuk melihat efek elemen sticky ini menempel pada bagian atas saat melewati viewport.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+</body>
+</html>

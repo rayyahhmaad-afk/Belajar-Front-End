@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            padding: 30px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            border: 2px solid #6C63FF;
+            border-radius: 12px;
+            margin: 20px auto;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #6C63FF;
+        }
+
+        .visual-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .margin-layer {
+            background-color: #fbeee6;
+            border: 2px dashed #e67e22;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #d35400;
+        }
+
+        .border-layer {
+            background-color: #ebf5fb;
+            border: 3px solid #3498db;
+            padding: 20px;
+            border-radius: 6px;
+            color: #2980b9;
+        }
+
+        .padding-layer {
+            background-color: #e8f8f5;
+            border: 2px dashed #2ecc71;
+            padding: 20px;
+            border-radius: 4px;
+            color: #27ae60;
+        }
+
+        .content-layer {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📦 CSS Box Model</h1>
+    <p class="subtitle">Setiap elemen HTML adalah kotak yang terdiri dari: <strong>Content → Padding → Border → Margin</strong></p>
+
+    <div class="box">
+        Kotak (Box Model)
+    </div>
+
+    <div class="visual-container">
+        <h2 style="text-align: center; margin-bottom: 15px; font-size: 1.2rem;">Visualisasi Lapisan Box Model</h2>
+        
+        <div class="margin-layer">
+            MARGIN (Jarak Luar)
+            <div class="border-layer">
+                BORDER (Garis Tepi)
+                <div class="padding-layer">
+                    PADDING (Jarak Dalam)
+                    <div class="content-layer">
+                        CONTENT (Isi Elemen / Teks)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

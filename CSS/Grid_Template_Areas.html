@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Template Areas (Hari 34)</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+
+        .page {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "sidebar main aside"
+                "footer footer footer";
+            grid-template-columns: 200px 1fr 200px;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+            gap: 10px;
+            background: #f4f7f6;
+            padding: 10px;
+        }
+
+        .header  { grid-area: header; background: #2c3e50; color: white; padding: 20px; text-align: center; border-radius: 6px; }
+        .sidebar { grid-area: sidebar; background: #34495e; color: white; padding: 20px; border-radius: 6px; }
+        .main    { grid-area: main; background: white; padding: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .aside   { grid-area: aside; background: #ecf0f1; color: #333; padding: 20px; border-radius: 6px; }
+        .footer  { grid-area: footer; background: #2c3e50; color: white; padding: 15px; text-align: center; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header class="header">
+            <h1>Header (grid-area: header)</h1>
+        </header>
+
+        <aside class="sidebar">
+            <h3>Sidebar</h3>
+            <p>grid-area: sidebar</p>
+        </aside>
+
+        <main class="main">
+            <h2>Konten Utama (grid-area: main)</h2>
+            <p>Ini adalah area utama halaman yang dibuat menggunakan CSS Grid Template Areas.</p>
+        </main>
+
+        <aside class="aside">
+            <h3>Aside</h3>
+            <p>grid-area: aside</p>
+        </aside>
+
+        <footer class="footer">
+            Footer (grid-area: footer)
+        </footer>
+    </div>
+
+</body>
+</html>

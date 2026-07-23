@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Definisikan variabel */
+        :root {
+            --primary: #6C63FF;
+            --spacing: 1rem;
+            --radius: 12px;
+        }
+
+        /* Gunakan variabel */
+        .button {
+            background-color: var(--primary);
+            color: white;
+            padding: var(--spacing);
+            border-radius: var(--radius);
+            border: none;
+        }
+
+        /* Dengan fallback (nilai cadangan) */
+        .box {
+            color: var(--text-color, black);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="button">Tombol Utama</button>
+    <div class="box">Teks Kotak</div>
+
+</body>
+</html>

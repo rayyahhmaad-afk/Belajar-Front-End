@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar CSS Selectors</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        p { 
+            color: gray; 
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .card { 
+            padding: 20px; 
+            background: white;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #header { 
+            background: navy; 
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        #header h1 {
+            color: white;
+            margin: 0;
+        }
+
+        nav a { 
+            text-decoration: none; 
+            color: #3498db;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        ul > li { 
+            list-style: none; 
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        a:hover { 
+            color: red; 
+        }
+
+        li:first-child { 
+            font-weight: bold; 
+            color: #2c3e50;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 8px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus { 
+            border-color: blue; 
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 255, 0.3);
+        }
+
+        p:nth-child(odd) { 
+            background: #f0f0f0; 
+        }
+
+        p::first-letter { 
+            font-size: 2em; 
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        p::before { 
+            content: "→ "; 
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <h1>Panduan Praktis CSS Selectors</h1>
+    </header>
+
+    <div class="card">
+        <h2>Navigasi (Descendant Selector: <code>nav a</code>)</h2>
+        <nav>
+            <a href="#section1">Beranda</a>
+            <a href="#section2">Artikel</a>
+            <a href="#section3">Kontak</a>
+        </nav>
+    </div>
+
+    <div class="card">
+        <h2>Daftar Paragraf (Pseudo-class & Pseudo-element)</h2>
+        <p>Paragraf pertama (Ganjil - Latar belakang abu-abu terang dari <code>p:nth-child(odd)</code> dan panah merah dari <code>p::before</code>).</p>
+        <p>Paragraf kedua (Genap - Tanpa latar belakang abu-abu).</p>
+        <p>Paragraf ketiga (Ganjil - Memiliki efek huruf pertama besar dari <code>p::first-letter</code>).</p>
+    </div>
+
+    <div class="card">
+        <h2>Daftar Item (Child Selector: <code>ul > li</code> & <code>li:first-child</code>)</h2>
+        <ul>
+            <li>Item Pertama (Bertebalan tebal karena <code>li:first-child</code>)</li>
+            <li>Item Kedua</li>
+            <li>Item Ketiga</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Form Input (Pseudo-class: <code>input:focus</code>)</h2>
+        <label for="username">Klik atau Fokus pada input di bawah:</label>
+        <input type="text" id="username" placeholder="Ketik sesuatu untuk melihat efek input:focus...">
+    </div>
+
+</body>
+</html>

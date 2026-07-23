@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float & Clear (Hari 35)</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { padding: 20px; background: #f4f7f6; line-height: 1.6; color: #333; }
+        h2 { margin: 20px 0 10px; color: #2c3e50; font-size: 1.2rem; }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .image {
+            float: left;
+            margin: 0 1rem 1rem 0;
+            width: 150px;
+            height: 100px;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .article {
+            columns: 3;
+            column-gap: 2rem;
+            column-rule: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Float & Clear (Hari 35)</h1>
+
+    <h2>1. Float & Clearfix</h2>
+    <div class="card clearfix">
+        <div class="image">Gambar Float</div>
+        <p>Teks ini berada di sekeliling gambar yang di-float ke kiri. Efek float membiarkan teks mengalir di samping elemen gambar. Dengan bantuan clearfix pada container, layout di bawahnya tidak akan tertimpa oleh elemen float.</p>
+    </div>
+
+    <h2>2. Multi-column Layout (Columns)</h2>
+    <div class="card">
+        <div class="article">
+            <p>Paragraf pertama pada tata letak multi-kolom. Properti columns membagi teks menjadi beberapa kolom secara otomatis.</p>
+            <p>Paragraf kedua yang mengalir ke kolom berikutnya. Column-gap mengatur jarak antarkolom dan column-rule memberikan pembatas garis.</p>
+            <p>Paragraf ketiga mengisi kolom terakhir dengan rapi dan responsif tanpa menggunakan float.</p>
+        </div>
+    </div>
+
+</body>
+</html>

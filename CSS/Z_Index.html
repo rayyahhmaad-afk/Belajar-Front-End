@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .tooltip {
+            position: absolute;
+            z-index: 50; /* Lapisan bawah */
+            background: lightblue;
+        }
+
+        .dropdown {
+            position: absolute;
+            z-index: 100; /* Lapisan tengah */
+            background: lightgreen;
+        }
+
+        .modal {
+            position: fixed;
+            z-index: 1000; /* Lapisan paling atas */
+            background: lightcoral;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tooltip">Tooltip (50)</div>
+    <div class="dropdown">Dropdown (100)</div>
+    <div class="modal">Modal (1000)</div>
+
+</body>
+</html>

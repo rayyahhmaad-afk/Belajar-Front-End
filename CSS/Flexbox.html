@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Dasar</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { padding: 20px; background: #f4f7f6; line-height: 1.5; }
+        h2 { margin: 15px 0 10px; color: #2c3e50; font-size: 1.2rem; }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .flex-grow-item {
+            flex: 1;
+            background: #e74c3c;
+        }
+
+        .align-self-item {
+            align-self: flex-end;
+            background: #2ecc71;
+            height: 80px;
+        }
+
+        .order-first {
+            order: -1;
+            background: #9b59b6;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Flexbox Dasar (Hari 31)</h1>
+
+    <h2>1. Flexbox Container</h2>
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+    </div>
+
+    <h2>2. Flex Items (Flex-Grow, Align-Self, Order)</h2>
+    <div class="container" style="height: 150px;">
+        <div class="item">Item Normal</div>
+        <div class="item flex-grow-item">Flex-Grow: 1</div>
+        <div class="item align-self-item">Align-Self: Flex-End</div>
+        <div class="item order-first">Order: -1</div>
+    </div>
+
+</body>
+</html>
