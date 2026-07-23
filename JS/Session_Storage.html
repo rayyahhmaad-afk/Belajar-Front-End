@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo SessionStorage & Browser API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        h1, h2 { color: #1e293b; }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 14px;
+            border: none;
+            background: #0284c7;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+        button:hover { background: #0369a1; }
+        button.btn-alt { background: #64748b; }
+        button.btn-alt:hover { background: #475569; }
+        button.btn-danger { background: #ef4444; }
+        button.btn-danger:hover { background: #dc2626; }
+        .info-box {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🕐 Session Storage & Browser API Demo</h1>
+    <p>Program kecil untuk mencoba <b>SessionStorage</b>, <b>Cookies</b>, <b>URL Parameters</b>, dan <b>Navigation</b>.</p>
+
+    <!-- 1. Session Storage vs Local Storage -->
+    <div class="card">
+        <h2>1. SessionStorage vs LocalStorage</h2>
+        <p>SessionStorage akan <b>hilang saat tab ditutup</b>. LocalStorage tetap <b>tersimpan</b>.</p>
+        <div class="btn-group">
+            <button id="btnSetSession">Simpan Session Token</button>
+            <button id="btnReadSession">Baca Session Token</button>
+            <button id="btnClearSession" class="btn-danger">Hapus SessionStorage</button>
+        </div>
+        <div id="sessionOutput" class="info-box">Status SessionToken: -</div>
+    </div>
+
+    <!-- 2. Cookies -->
+    <div class="card">
+        <h2>2. Browser Cookies (document.cookie)</h2>
+        <div class="btn-group">
+            <button id="btnSetCookie">Set Cookie ("user=Andi", 1 Hari)</button>
+            <button id="btnReadCookie">Baca Semua Cookies</button>
+        </div>
+        <div id="cookieOutput" class="info-box">Cookies: -</div>
+    </div>
+
+    <!-- 3. URL Parameters -->
+    <div class="card">
+        <h2>3. URL Parameters (URLSearchParams)</h2>
+        <p>Parameter URL saat ini: <span id="currentUrlBadge" class="badge"></span></p>
+        <div class="btn-group">
+            <button id="btnAddParams">Simulasi Tambah URL Parameter (?name=Andi&role=admin)</button>
+        </div>
+        <div id="urlParamsOutput" class="info-box">Hasil URLSearchParams: -</div>
+    </div>
+
+    <!-- 4. Navigation & History -->
+    <div class="card">
+        <h2>4. Navigation & History API</h2>
+        <div class="btn-group">
+            <button id="btnReload" class="btn-alt">🔄 Reload Page</button>
+            <button id="btnBack" class="btn-alt">⬅️ History Back</button>
+            <button id="btnForward" class="btn-alt">➡️ History Forward</button>
+            <button id="btnGoGoogle">🌐 Buka Google.com</button>
+        </div>
+    </div>
+
+    <script src="Session_Storage.js"></script>
+    <script>
+        // 1. Session Storage Logic
+        const sessionOutput = document.getElementById("sessionOutput");
+        
+        document.getElementById("btnSetSession").addEventListener("click", () => {
+            const randomToken = "TOKEN_SESSION_" + Math.floor(Math.random() * 10000);
+            sessionStorage.setItem("token", randomToken);
+            sessionOutput.textContent = `Berhasil menyimpan token: ${randomToken}\n(Coba buka tab baru atau tutup tab ini lalu buka kembali untuk melihat bedanya dengan LocalStorage!)`;
+        });
+
+        document.getElementById("btnReadSession").addEventListener("click", () => {
+            const token = sessionStorage.getItem("token");
+            sessionOutput.textContent = token ? `Token di SessionStorage: ${token}` : "SessionStorage KOSONG (Belum diset atau tab baru dibuka)!";
+        });
+
+        document.getElementById("btnClearSession").addEventListener("click", () => {
+            sessionStorage.clear();
+            sessionOutput.textContent = "SessionStorage telah dibersihkan.";
+        });
+
+        // 2. Cookies Logic
+        const cookieOutput = document.getElementById("cookieOutput");
+
+        document.getElementById("btnSetCookie").addEventListener("click", () => {
+            document.cookie = "username=Andi; max-age=86400; path=/";
+            document.cookie = "session_mode=active; max-age=3600; path=/";
+            cookieOutput.textContent = "Cookie berhasil dibuat!\nusername=Andi (max-age: 24 jam)";
+        });
+
+        document.getElementById("btnReadCookie").addEventListener("click", () => {
+            cookieOutput.textContent = document.cookie ? `Cookies Aktif:\n${document.cookie}` : "Tidak ada cookie ditemukan.";
+        });
+
+        // 3. URL Parameters Logic
+        const currentUrlBadge = document.getElementById("currentUrlBadge");
+        const urlParamsOutput = document.getElementById("urlParamsOutput");
+        
+        currentUrlBadge.textContent = window.location.search || "(tidak ada parameter)";
+
+        function parseCurrentParams() {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get("name") || "Tidak ditemukan";
+            const role = params.get("role") || "Tidak ditemukan";
+            urlParamsOutput.textContent = `Parameter 'name': ${name}\nParameter 'role': ${role}`;
+        }
+        parseCurrentParams();
+
+        document.getElementById("btnAddParams").addEventListener("click", () => {
+            window.location.search = "?name=Andi&role=admin";
+        });
+
+        // 4. Navigation Logic
+        document.getElementById("btnReload").addEventListener("click", () => window.location.reload());
+        document.getElementById("btnBack").addEventListener("click", () => history.back());
+        document.getElementById("btnForward").addEventListener("click", () => history.forward());
+        document.getElementById("btnGoGoogle").addEventListener("click", () => window.location.href = "https://google.com");
+    </script>
+
+</body>
+</html>

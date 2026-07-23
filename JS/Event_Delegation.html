@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+</head>
+<body style="padding: 20px;">
+
+    <ul id="todoList">
+        <li>
+            <span>Belajar JavaScript</span>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Hapus</button>
+        </li>
+        <li>
+            <span>Belajar DOM</span>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Hapus</button>
+        </li>
+    </ul>
+
+    <script>
+        const list = document.querySelector("#todoList");
+
+        list.addEventListener("click", (e) => {
+            if (e.target.matches(".delete-btn")) {
+                e.target.closest("li").remove();
+            }
+            if (e.target.matches(".edit-btn")) {
+                const li = e.target.closest("li");
+                const span = li.querySelector("span");
+                const newText = prompt("Edit:", span.textContent);
+                if (newText) span.textContent = newText;
+            }
+        });
+    </script>
+
+</body>
+</html>

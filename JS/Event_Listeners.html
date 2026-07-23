@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listeners</title>
+</head>
+<body style="height: 1500px; padding: 20px;">
+
+    <button id="myBtn">Klik Saya</button>
+    <br><br>
+
+    <form id="myForm">
+        <input type="text" id="myInput" placeholder="Ketik sesuatu...">
+        <button type="submit">Kirim</button>
+    </form>
+
+    <script>
+        const btn = document.querySelector("#myBtn");
+        btn.addEventListener("click", (e) => {
+            console.log("Diklik!");
+            console.log(e.target);
+        });
+
+        const input = document.querySelector("#myInput");
+        input.addEventListener("input", (e) => {
+            console.log(e.target.value);
+        });
+
+        const form = document.querySelector("#myForm");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            console.log("Form dikirim!");
+        });
+
+        window.addEventListener("scroll", () => {
+            console.log("Scroll Y:", window.scrollY);
+        });
+
+        window.addEventListener("resize", () => {
+            console.log("Lebar jendela:", window.innerWidth);
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                console.log("Enter ditekan");
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo LocalStorage</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1, h2 { color: #2c3e50; }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 16px;
+            border: none;
+            background: #3b82f6;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        button:hover { background: #2563eb; }
+        button.btn-danger { background: #ef4444; }
+        button.btn-danger:hover { background: #dc2626; }
+        ul { list-style: none; padding: 0; }
+        li {
+            background: #f1f5f9;
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        pre {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 14px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💾 LocalStorage Demo</h1>
+
+    <div class="card">
+        <h2>1. Simpan & Baca String / Object</h2>
+        <button id="btnSaveUser">Simpan Data User</button>
+        <button id="btnReadUser">Baca Data User</button>
+        <button id="btnRemoveUser" class="btn-danger">Hapus Data User</button>
+        <pre id="outputConsole">// Hasil console log akan tampil di sini...</pre>
+    </div>
+
+    <div class="card">
+        <h2>2. Interaktif Todo App (Persistence)</h2>
+        <div class="input-group">
+            <input type="text" id="todoInput" placeholder="Tambah tugas baru...">
+            <button id="btnAddTodo">Tambah</button>
+        </div>
+        <ul id="todoList"></ul>
+        <button id="btnClearAll" class="btn-danger">Hapus Semua (Clear LocalStorage)</button>
+    </div>
+
+    <script src="Local_Storage.js"></script>
+    <script>
+        const output = document.getElementById("outputConsole");
+
+        document.getElementById("btnSaveUser").addEventListener("click", () => {
+            localStorage.setItem("nama", "Andi");
+            localStorage.setItem("user", JSON.stringify({ nama: "Andi", umur: 25, role: "Developer" }));
+            output.textContent = "Data 'nama' dan 'user' berhasil disimpan ke LocalStorage!";
+        });
+
+        document.getElementById("btnReadUser").addEventListener("click", () => {
+            const nama = localStorage.getItem("nama");
+            const user = JSON.parse(localStorage.getItem("user"));
+            output.textContent = `Nama: ${nama}\nUser Object: ${JSON.stringify(user, null, 2)}`;
+        });
+
+        document.getElementById("btnRemoveUser").addEventListener("click", () => {
+            localStorage.removeItem("nama");
+            localStorage.removeItem("user");
+            output.textContent = "Data 'nama' dan 'user' berhasil dihapus!";
+        });
+
+        // Interactive Todo List Logic
+        const todoInput = document.getElementById("todoInput");
+        const todoListEl = document.getElementById("todoList");
+        let activeTodos = JSON.parse(localStorage.getItem("todos")) || [];
+
+        function renderTodos() {
+            todoListEl.innerHTML = "";
+            activeTodos.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    <span>${item}</span>
+                    <button onclick="deleteTodo(${index})" class="btn-danger" style="padding: 4px 8px; font-size: 12px;">Hapus</button>
+                `;
+                todoListEl.appendChild(li);
+            });
+        }
+
+        document.getElementById("btnAddTodo").addEventListener("click", () => {
+            const val = todoInput.value.trim();
+            if (val) {
+                activeTodos.push(val);
+                localStorage.setItem("todos", JSON.stringify(activeTodos));
+                todoInput.value = "";
+                renderTodos();
+            }
+        });
+
+        window.deleteTodo = function(index) {
+            activeTodos.splice(index, 1);
+            localStorage.setItem("todos", JSON.stringify(activeTodos));
+            renderTodos();
+        };
+
+        document.getElementById("btnClearAll").addEventListener("click", () => {
+            localStorage.clear();
+            activeTodos = [];
+            renderTodos();
+            output.textContent = "LocalStorage telah dibersihkan sepenuhnya (localStorage.clear()).";
+        });
+
+        // Render awal
+        renderTodos();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Handling</title>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body style="padding: 20px;">
+
+    <form id="myForm">
+        <input type="text" name="nama" placeholder="Nama lengkap">
+        <input type="email" name="email" placeholder="Alamat Email">
+        <button type="submit">Kirim Data</button>
+    </form>
+
+    <script>
+        const form = document.querySelector("#myForm");
+        const namaInput = document.querySelector('[name="nama"]');
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const nama = formData.get("nama");
+            const email = formData.get("email");
+
+            if (nama.length < 3) {
+                alert("Nama minimal 3 karakter");
+                return;
+            }
+
+            console.log({ nama, email });
+        });
+
+        namaInput.addEventListener("input", (e) => {
+            const isValid = e.target.value.length >= 3;
+            e.target.classList.toggle("error", !isValid);
+        });
+    </script>
+
+</body>
+</html>
