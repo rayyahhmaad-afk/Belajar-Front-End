@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Todo App</title>
+</head>
+<body style="padding: 20px;">
+
+    <h1>Todo App (LocalStorage)</h1>
+
+    <form id="todoForm">
+        <input type="text" id="todoInput" placeholder="Tambah tugas..." required>
+        <button type="submit">Tambah</button>
+    </form>
+
+    <ul id="todoList"></ul>
+
+    <script src="Todo_App.js"></script>
+    <script>
+        document.getElementById("todoForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const input = document.getElementById("todoInput");
+            addTodo(input.value);
+            input.value = "";
+        });
+    </script>
+
+</body>
+</html>

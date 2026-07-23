@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating Elements</title>
+</head>
+<body style="padding: 20px;">
+
+    <h1>Membuat Elemen Dinamis</h1>
+
+    <button id="btnCard">Tambah Card</button>
+    <div id="container"></div>
+
+    <h2>List Fragment</h2>
+    <button id="btnList">Render List</button>
+    <ul id="list"></ul>
+
+    <h2>Insert Adjacent HTML</h2>
+    <button id="btnInsert">Insert HTML</button>
+    <div id="target" style="border: 1px solid black; padding: 10px; margin-top: 10px;">Target</div>
+
+    <script src="Creating_Elements.js"></script>
+    <script>
+        document.getElementById("btnCard").addEventListener("click", () => {
+            const card = document.createElement("div");
+            card.innerHTML = "<h3>Judul</h3><p>Deskripsi</p>";
+            document.getElementById("container").appendChild(card);
+        });
+
+        document.getElementById("btnList").addEventListener("click", () => {
+            const fragment = document.createDocumentFragment();
+            ["Andi", "Budi", "Cici"].forEach(name => {
+                const li = document.createElement("li");
+                li.textContent = name;
+                fragment.appendChild(li);
+            });
+            document.getElementById("list").appendChild(fragment);
+        });
+
+        document.getElementById("btnInsert").addEventListener("click", () => {
+            document.getElementById("target").insertAdjacentHTML("beforeend", "<p>Baru</p>");
+        });
+    </script>
+
+</body>
+</html>

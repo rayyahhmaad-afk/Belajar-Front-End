@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Timers & Intervals</title>
+</head>
+<body style="padding: 20px;">
+
+    <h1>Demo Timers</h1>
+
+    <button id="btnTimeout">Start Timeout (3 Detik)</button>
+    <button id="btnCancel">Cancel Timeout</button>
+    <p id="output">-</p>
+
+    <h2>Countdown</h2>
+    <h3 id="count">10</h3>
+    <button id="btnStart">Start Countdown</button>
+    <button id="btnStop">Stop Countdown</button>
+
+    <script src="Timers.js"></script>
+    <script>
+        const output = document.getElementById("output");
+        let timerId;
+
+        document.getElementById("btnTimeout").addEventListener("click", () => {
+            timerId = setTimeout(() => {
+                output.textContent = "Selesai (3 detik)";
+            }, 3000);
+        });
+
+        document.getElementById("btnCancel").addEventListener("click", () => {
+            clearTimeout(timerId);
+            output.textContent = "Dibatalkan";
+        });
+
+        const countEl = document.getElementById("count");
+        let count = 10;
+        let intervalId;
+
+        document.getElementById("btnStart").addEventListener("click", () => {
+            clearInterval(intervalId);
+            count = 10;
+            countEl.textContent = count;
+            intervalId = setInterval(() => {
+                count--;
+                countEl.textContent = count;
+                if (count <= 0) clearInterval(intervalId);
+            }, 1000);
+        });
+
+        document.getElementById("btnStop").addEventListener("click", () => {
+            clearInterval(intervalId);
+        });
+    </script>
+
+</body>
+</html>
