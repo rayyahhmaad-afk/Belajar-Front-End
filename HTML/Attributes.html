@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-user-id="123" data-role="Admin">
+        user admin
+    </div>
+    
+    <button data-action="delete" data-user-id="123">Hapus User</button>
+
+    <script>
+        const el = document.querySelector('[data-user-id]');
+        const userid = el.dataset.userId;
+        console.log(el.dataset);
+       
+    </script>
+</body>
+</html>
