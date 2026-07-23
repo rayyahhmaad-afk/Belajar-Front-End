@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .box {
+            /* calc() - Perhitungan nilai */
+            width: calc(100% - 40px);
+            
+            /* clamp() - Responsif (min, ideal, max) */
+            font-size: clamp(1rem, 2.5vw, 2rem);
+            
+            /* min() & max() - Batas nilai terendah/tertinggi */
+            max-width: min(100%, 800px);
+            padding: max(1rem, 3vw);
+            
+            background-color: #f0f4f8;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        /* attr() - Ambil nilai atribut HTML (biasanya dengan ::before / ::after) */
+        .tooltip::after {
+            content: attr(data-label);
+            background-color: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <p class="tooltip" data-label="Penting!">Kotak Fungsi CSS</p>
+    </div>
+
+</body>
+</html>

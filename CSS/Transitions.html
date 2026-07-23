@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            background: #6C63FF;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background: #5B52EE;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+        }
+
+        .card {
+            width: 200px;
+            height: 100px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+        }
+
+        .card:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="button">Hover Saya</button>
+    <div class="card"></div>
+
+</body>
+</html>
