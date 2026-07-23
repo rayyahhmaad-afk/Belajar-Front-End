@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a2e;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a2e;
+            --text: #e2e8f0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+            font-family: sans-serif;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <h1>Dark Mode Example</h1>
+    <p>Tema tampilan menggunakan data-theme="dark".</p>
+
+</body>
+</html>

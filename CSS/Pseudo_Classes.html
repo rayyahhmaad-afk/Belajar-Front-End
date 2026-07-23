@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        li:first-child {
+            font-weight: bold;
+        }
+
+        li:nth-child(2n) {
+            background: #f5f5f5;
+        }
+
+        input:focus {
+            border-color: #6C63FF;
+            outline: none;
+        }
+
+        input:checked + label {
+            color: green;
+            font-weight: bold;
+        }
+
+        p:not(.special) {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li>Item 1 (First)</li>
+        <li>Item 2 (Even)</li>
+        <li>Item 3</li>
+        <li>Item 4 (Even)</li>
+    </ul>
+
+    <input type="checkbox" id="check">
+    <label for="check">Centang saya</label>
+
+    <br><br>
+    <input type="text" placeholder="Ketik di sini...">
+
+    <p class="special">Teks Spesial</p>
+    <p>Teks Biasa</p>
+
+</body>
+</html>

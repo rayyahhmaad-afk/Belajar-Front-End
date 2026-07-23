@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .card-container {
+            container-type: inline-size;
+            container-name: card;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #f9f9f9;
+            padding: 15px;
+        }
+
+        @container card (min-width: 400px) {
+            .card {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card">
+            <div style="width: 100px; height: 100px; background: #6C63FF;"></div>
+            <div>
+                <h3>Judul Kartu</h3>
+                <p>Konten responsif berdasarkan ukuran kontainer induknya.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

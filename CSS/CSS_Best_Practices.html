@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #6C63FF;
+            --font-size-base: 1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+        }
+
+        .card--featured {
+            border: 2px solid var(--primary);
+        }
+
+        .card__title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card__button--primary {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card card--featured">
+        <h2 class="card__title">Judul Kartu</h2>
+        <button class="card__button--primary">Tombol BEM</button>
+    </div>
+
+</body>
+</html>
